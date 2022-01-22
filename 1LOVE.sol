@@ -218,8 +218,8 @@ contract DividendDistributor is IDividendDistributor {
         uint256 totalRealised;
     }
 
-    IBEP20 BUSD = IBEP20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
-    address WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
+    IBEP20 BUSD = IBEP20(0xA706c9535A9BFa629c4D84b0eB65C00287689dAb);
+    address WBNB = 0x45b57d5eF2863581cb83fab3BFBE420b50a3daBB;
     IDEXRouter router;
 
     address[] shareholders;
@@ -376,17 +376,17 @@ contract DividendDistributor is IDividendDistributor {
 contract ONELOVE is IBEP20, Auth {
     using SafeMath for uint256;
 
-    address BUSD = 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56;
-    address WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
+    address BUSD = 0xA706c9535A9BFa629c4D84b0eB65C00287689dAb;
+    address WBNB = 0x45b57d5eF2863581cb83fab3BFBE420b50a3daBB;
     address DEAD = 0x000000000000000000000000000000000000dEaD;
     address ZERO = 0x0000000000000000000000000000000000000000;
 
-    string constant _name = "ONELOVE";
-    string constant _symbol = "1LOVE";
-    uint8 constant _decimals = 9;
+    string constant _name = "LuckysCharityToken";
+    string constant _symbol = "LCT"
+    uint8 constant _decimals = 11
 
     uint256 _totalSupply = 100000000000000 * (10 ** _decimals);
-    uint256 public _maxTxAmount = _totalSupply / 1000;
+    uint256 public _maxTxAmount = _totalSupply / 5000;
 
     mapping (address => uint256) _balances;
     mapping (address => mapping (address => uint256)) _allowances;
@@ -395,12 +395,12 @@ contract ONELOVE is IBEP20, Auth {
     mapping (address => bool) isTxLimitExempt;
     mapping (address => bool) isDividendExempt;
 
-    uint256 liquidityFee = 300;
-    uint256 buybackFee = 300;
-    uint256 reflectionFee = 300;
-    uint256 charityFee = 200;
-    uint256 marketingFee = 100;
-    uint256 totalFee = 1200;
+    uint256 liquidityFee = 100;
+    uint256 buybackFee = 150;
+    uint256 reflectionFee = 100;
+    uint256 charityFee = 2500;
+    uint256 marketingFee = 150;
+    uint256 totalFee = 3500
     uint256 feeDenominator = 10000;
 
     address public autoLiquidityReceiver;
@@ -453,8 +453,8 @@ contract ONELOVE is IBEP20, Auth {
         isDividendExempt[DEAD] = true;
 
         autoLiquidityReceiver = msg.sender;
-        marketingFeeReceiver = 0xC336C970e5fA27D1F72e4e9939Ee09DAe68Ed97b;
-        charityFeeReceiver = 0x5D8FD08356CF3C2aC3fBEC29826731F288Df454F;
+        marketingFeeReceiver = 0xA1353988575E6a088DE39D0b2Ea38f490ae43065;
+        charityFeeReceiver = 0xc4d4d5c964aB33F129F729974a844D0E14F40085;
 
         _balances[msg.sender] = _totalSupply;
         emit Transfer(address(0), msg.sender, _totalSupply);
